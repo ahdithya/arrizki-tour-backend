@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const ReservCarSchema = new Schema(
+const ReservCustomWisataSchema = new Schema(
   {
     namaReservant: {
       type: String,
@@ -11,30 +11,51 @@ const ReservCarSchema = new Schema(
     phoneNumber: {
       type: String,
       required: true,
-      maxlength: 20,
+      max: 20,
     },
     email: {
       type: String,
       required: true,
       maxlength: 30,
     },
+    jumlahPeserta: {
+      type: Number,
+      required: true,
+      max: 1000,
+    },
     tanggalReservasi: {
       type: Date,
       required: true,
     },
-    waktuAntar: {
+    waktuJemput: {
       type: String,
       required: true,
+    },
+    lokasiJemput: {
+      type: String,
+      required: true,
+      maxlength: 300,
     },
     lokasiAntar: {
       type: String,
       required: true,
       maxlength: 300,
     },
-    unitId: {
-      type: mongoose.Types.ObjectId,
+    armada: {
+      type: String,
       required: true,
-      ref: "car",
+      maxlength: 300,
+    },
+    fasilitasPilihan: {
+      type: String,
+      required: true,
+      maxlength: 300,
+    },
+    harga: {
+      type: String,
+      required: true,
+      default: 0,
+      maxlength: 300,
     },
     pesananTambahan: {
       type: String,
@@ -47,4 +68,4 @@ const ReservCarSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("reservCar", ReservCarSchema);
+module.exports = mongoose.model("reservCustomWisata", ReservCustomWisataSchema);
